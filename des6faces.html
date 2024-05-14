@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <script>
+      function lancer(){
+        var Val = Math.floor((Math.random() * 6) + 1); // Génère un nombre aléatoire entre 1 et 6
+        
+        // Cache tous les cercles
+        document.getElementById('C1').style.display = 'none';
+        document.getElementById('C2').style.display = 'none';
+        document.getElementById('C3').style.display = 'none';
+        document.getElementById('C4').style.display = 'none';
+        document.getElementById('C5').style.display = 'none';
+        document.getElementById('C6').style.display = 'none';
+		
+        // Affiche le cercle approprié en fonction du résultat du dé
+        switch(Val){
+          case 1:
+            document.getElementById('C1').style.display = 'block';
+            break;
+          case 2:
+            document.getElementById('C2').style.display = 'block';
+            break;
+          case 3:
+            document.getElementById('C3').style.display = 'block';
+            break;
+          case 4:
+            document.getElementById('C4').style.display = 'block';
+            break;
+          case 5:
+            document.getElementById('C5').style.display = 'block';
+            break;
+          case 6:
+            document.getElementById('C6').style.display = 'block';
+            break;
+        }
+      }
+    </script>  
+  </head>
+  <body>
+    <button onclick="lancer()">Lancer</button>
+    <svg width="300px" height="300px" style="background-color:lightgray">
+      <circle id="C1" cx="50" cy="50" r="20" stroke="black" stroke-width="3" fill="red" style="display:none"/>
+      <circle id="C2" cx="150" cy="50" r="20" stroke="black" stroke-width="3" fill="red" style="display:none"/>
+      <circle id="C3" cx="250" cy="50" r="20" stroke="black" stroke-width="3" fill="red" style="display:none"/>
+      <circle id="C4" cx="50" cy="150" r="20" stroke="black" stroke-width="3" fill="red" style="display:none"/>
+      <circle id="C5" cx="150" cy="150" r="20" stroke="black" stroke-width="3" fill="red" style="display:none"/>
+      <circle id="C6" cx="250" cy="150" r="20" stroke="black" stroke-width="3" fill="red" style="display:none"/>
+    </svg> 
+  </body>
+</html>
