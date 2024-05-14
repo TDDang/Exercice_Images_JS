@@ -2,17 +2,17 @@
   <head>
     <script>
       function lancer(){
-        var Val = Math.floor((Math.random() * 6) + 1); // Génère un nombre aléatoire entre 1 et 6
-        
-        // Cache tous les cercles
+        var Val = Math.floor((Math.random() * 6) + 1);
         document.getElementById('C1').style.display = 'none';
         document.getElementById('C2').style.display = 'none';
         document.getElementById('C3').style.display = 'none';
         document.getElementById('C4').style.display = 'none';
         document.getElementById('C5').style.display = 'none';
         document.getElementById('C6').style.display = 'none';
-		
-        // Affiche le cercle approprié en fonction du résultat du dé
+	document.getElementById('C7').style.display = 'none';
+	document.getElementById('C8').style.display = 'none';
+	document.getElementById('C9').style.display = 'none';
+	      
         switch(Val){
           case 1:
             document.getElementById('C1').style.display = 'block';
