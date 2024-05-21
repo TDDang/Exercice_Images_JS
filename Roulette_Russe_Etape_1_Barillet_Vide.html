@@ -1,28 +1,84 @@
-</html>
+<!DOCTYPE html>
+<html lang="fr">
 <head>
+<meta charset="UTF-8">
+<title>Roulette Russe</title>
+<style>
+    svg {
+        cursor: pointer;
+    }
+</style>
 <script>
-function lancer(){
-          alert("le barillet tourne");
+let balles = 0;
+let gains = 0;
+const chambresRouges = [];
+
+function colorierChambre(evt) {
+    if (balles < 3) {
+        const chambre = evt.target;
+        if (chambre.getAttribute("fill") === "gray") {
+            chambre.setAttribute("fill", "red");
+            chambresRouges.push(chambre.id);
+            balles++;
+        }
+    }
+}
+
+function lancer() {
+    if (balles === 0) {
+        alert("Placez au moins une balle avant de jouer.");
+        return;
+    }
+
+    const randomNumber = Math.floor(Math.random() * 6) + 1;
+    const chambreBleue = document.getElementById(`Br${randomNumber}`);
+    chambreBleue.setAttribute("fill", "blue");
+
+    if (chambresRouges.includes(chambreBleue.id)) {
+        alert("Perdu ! Vous avez tiré sur une chambre rouge.");
+        gains = 0; // Perte totale des gains
+    } else {
+        alert("Gagné ! Vous avez évité les chambres rouges.");
+        if (balles === 1) {
+            gains += 10000;
+        } else if (balles === 2) {
+            gains += 100000;
+        } else if (balles === 3) {
+            gains += 1000000;
+        }
+    }
+
+    document.getElementById("gains").textContent = `Gains : ${gains} €`;
+
+    // Réinitialiser le jeu
+    setTimeout(resetGame, 2000);
+}
+
+function resetGame() {
+    balles = 0;
+    chambresRouges.length = 0;
+
+    for (let i = 1; i <= 6; i++) {
+        const chambre = document.getElementById(`Br${i}`);
+        chambre.setAttribute("fill", "gray");
+    }
 }
 </script>
-
-
 </head>
 <body>
-	<h1>Roulette Russe</h1>
+    <h1>Roulette Russe</h1>
+    <svg width="200" height="200" style="background-color:antiquewhite">
+        <circle cx="100" cy="100" r="95" stroke="black" stroke-width="3" fill="none" />
+        <circle id="Br1" cx="100" cy="40" r="25" stroke="black" stroke-width="3" fill="gray" onclick="colorierChambre(event)" />
+        <circle id="Br2" cx="150" cy="70" r="25" stroke="black" stroke-width="3" fill="gray" onclick="colorierChambre(event)" />
+        <circle id="Br3" cx="50" cy="70" r="25" stroke="black" stroke-width="3" fill="gray" onclick="colorierChambre(event)" />
+        <circle id="Br4" cx="50" cy="130" r="25" stroke="black" stroke-width="3" fill="gray" onclick="colorierChambre(event)" />
+        <circle id="Br5" cx="150" cy="130" r="25" stroke="black" stroke-width="3" fill="gray" onclick="colorierChambre(event)" />
+        <circle id="Br6" cx="100" cy="160" r="25" stroke="black" stroke-width="3" fill="gray" onclick="colorierChambre(event)" />
+        <circle cx="100" cy="100" r="10" stroke="black" stroke-width="3" fill="black" />
+    </svg>
 
-	<svg width=200 height=200 style="background-color:antiquewhite">
-	<circle cx="100" cy="100" r="95" stroke="black" stroke-width="3" fill="none" />
-	<circle id="Br1" cx="100" cy="40" r="25" stroke="black" stroke-width="3" fill="gray" />
-	<circle id="Br2" cx="150" cy="70" r="25" stroke="black" stroke-width="3" fill="gray" />
-	<circle id="Br3" cx="50" cy="70" r="25" stroke="black" stroke-width="3" fill="gray" />
-	<circle id="Br4" cx="50" cy="130" r="25" stroke="black" stroke-width="3" fill="gray" />
-	<circle id="Br5" cx="150" cy="130" r="25" stroke="black" stroke-width="3" fill="gray" />
-	<circle id="Br6" cx="100" cy="160" r="25" stroke="black" stroke-width="3" fill="gray" />
-	<circle cx="100" cy="100" r="10" stroke="black" stroke-width="3" fill="black" />
-	</svg>	
-	
-	<button onclick="lancer()">Jouer</button>	
-	
+    <button onclick="lancer()">Jouer</button>
+    <p id="gains">Gains : 0 €</p>
 </body>
 </html>
