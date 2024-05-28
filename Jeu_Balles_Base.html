@@ -38,18 +38,18 @@ function bouger(){
     var ballY = parseInt(ball.getAttribute("y"));
 
     // Déplacement horizontal du chat
-    ballBlueX -= 5;
+    ballBlueX -= 15;
     if (ballBlueX < 15) { ballBlueX = 15; }
 
     // Déplacement vertical du chat en fonction de la souris
     if (ballBlueY < ballY) {
-        ballBlueY += 5;
+        ballBlueY += 15;
     } else if (ballBlueY > ballY) {
-        ballBlueY -= 5;
+        ballBlueY -= 15;
     }
 
     ballBlue.setAttribute("x", ballBlueX);
-    ballBlue.setAttribute("y", ballBlueY + 5);
+    ballBlue.setAttribute("y", ballBlueY + 15);
 }
 
 function deplacement(evt) {
