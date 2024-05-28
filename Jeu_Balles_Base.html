@@ -39,7 +39,10 @@ function deplacement(evt) {
 			break;
                 // Droite 
                 case 39:
-
+			ballX += 15;
+            		if (ballX > zoneWidth - 15) { ballX = zoneWidth - 15; }
+            		document.getElementById('ball').setAttribute("cx", ballX);
+            				break;
 
 		// Haut 
                 case 38:
