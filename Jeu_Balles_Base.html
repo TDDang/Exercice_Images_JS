@@ -71,7 +71,7 @@ function deplacement(evt) {
         // Droite 
         case 39:
             ballX += 15;
-            if (ballX > zoneWidth - 30) { ballX = zoneWidth - 30; }
+            if (ballX > zoneWidth - 15) { ballX = zoneWidth - 15; }
             ball.setAttribute("x", ballX);
             break;
 
@@ -85,7 +85,7 @@ function deplacement(evt) {
         // Bas 
         case 40:
             ballY += 15;
-            if (ballY > zoneHeight - 30) { ballY = zoneHeight - 30; }
+            if (ballY > zoneHeight - 15) { ballY = zoneHeight - 15; }
             ball.setAttribute("y", ballY);
             break;
     }
