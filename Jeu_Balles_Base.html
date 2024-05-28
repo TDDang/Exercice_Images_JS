@@ -22,6 +22,7 @@ h1 {
 //var globale
 var speed = 500;
 var ballBlueX = 885;
+var ballBlueY = 200;
 
 function principale(){
     //Ajout d'un écouteur sur les touches
@@ -31,11 +32,25 @@ function principale(){
 }
 
 function bouger(){
-    // Code pour faire bouger l'emoji (ballBlue)
+    // Code pour faire bouger le chat (ballBlue)
     var ballBlue = document.getElementById('ballBlue');
+    var ball = document.getElementById('ball');
+    var ballY = parseInt(ball.getAttribute("cy"));
+
+    // Déplacement horizontal du chat
     ballBlueX -= 15;
     if (ballBlueX < 15) { ballBlueX = 15; }
     ballBlue.setAttribute("x", ballBlueX);
+
+    // Déplacement vertical du chat en fonction de la souris
+    if (ballBlueY < ballY) {
+        ballBlueY += 15;
+    } else if (ballBlueY > ballY) {
+        ballBlueY -= 15;
+    }
+
+    ballBlue.setAttribute("x", ballBlueX);
+    ballBlue.setAttribute("y", ballBlueY + 15);
 }
 
 function deplacement(evt) {
@@ -81,8 +96,8 @@ function deplacement(evt) {
 <body onload="principale()">
     <h1>Jeux Javascript</h1>
     <svg id="zonedejeux">
-        <circle cx="450" cy="200" r="15" fill="tomato" id="ball" />
-        <text x="885" y="200" font-size="30" id="ballBlue">&#128540;</text>
+        <text x="450" y="200" font-size="30" id="ball">&#128057;</text>
+        <text x="885" y="200" font-size="30" id="ballBlue">&#128572;</text>
     </svg>
 </body>
 </html>
