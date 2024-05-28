@@ -1,85 +1,88 @@
 <html>
 <head>
 <style>
-#zonedejeux{background-color:antiquewhite;
-			width:900px; height:400px;
-			position:absolute; top:3px; left:3px;
-			z-index:1;}
-h1{position:absolute;top:-7px; left:320px; z-index:2;}
+#zonedejeux {
+    background-color: antiquewhite;
+    width: 900px;
+    height: 400px;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    z-index: 1;
+}
+h1 {
+    position: absolute;
+    top: -7px;
+    left: 320px;
+    z-index: 2;
+}
 </style>
 
 <script>
 //var globale
 var speed = 500;
+var ballBlueX = 885;
 
 function principale(){
-	//Ajout d'un écouteur sur les touches
-	window.addEventListener('keydown', deplacement, true);
-	//Lance la fonction bouger() à interval de "speed"
-	enemy = setInterval(bouger, speed);
-	
+    //Ajout d'un écouteur sur les touches
+    window.addEventListener('keydown', deplacement, true);
+    //Lance la fonction bouger() à interval de "speed"
+    enemy = setInterval(bouger, speed);
 }
 
 function bouger(){
-
-	//Code à créer pour faire bouger la boule enemy
-	var ballBlue = document.getElementById('ballBlue');
-    	ballBlueX -= 15;
-    	if (ballBlueX < 15) { ballBlueX = 15; }
-    	ballBlue.setAttribute("cx", ballBlueX);
-	
+    // Code pour faire bouger l'emoji (ballBlue)
+    var ballBlue = document.getElementById('ballBlue');
+    ballBlueX -= 5;
+    if (ballBlueX < 15) { ballBlueX = 15; }
+    ballBlue.setAttribute("x", ballBlueX);
 }
-
 
 function deplacement(evt) {
-		   var ballX = parseInt(document.getElementById('ball').getAttribute("cx"));
-		   var ballY = parseInt(document.getElementById('ball').getAttribute("cy"));
-		var zone = document.getElementById('zonedejeux').getBoundingClientRect();
-		var zoneWidth = zone.width;
-    		var zoneHeight = zone.height;
-           
-	switch (evt.keyCode) {
-                // Gauche 
-                case 37:
-			ballX -= 15;
-                    	if(ballX<15){ballX=15;}
-			ball.setAttribute("cx", ballX);
-			break;
-                // Droite 
-                case 39:
-			ballX += 15;
-            		if (ballX > zoneWidth - 15) { ballX = zoneWidth - 15; }
-            		ball.setAttribute("cx", ballX);
-            		break;
+    var ball = document.getElementById('ball');
+    var ballX = parseInt(ball.getAttribute("cx"));
+    var ballY = parseInt(ball.getAttribute("cy"));
+    var zone = document.getElementById('zonedejeux').getBoundingClientRect();
+    var zoneWidth = zone.width;
+    var zoneHeight = zone.height;
 
-		// Haut 
-                case 38:
-			ballY -= 15;
-			if(ballY<15){ballY=15;}
-			ball.setAttribute("cy", ballY);
-			break;
+    switch (evt.keyCode) {
+        // Gauche 
+        case 37:
+            ballX -= 15;
+            if (ballX < 15) { ballX = 15; }
+            ball.setAttribute("cx", ballX);
+            break;
 
-		// Bas 
-                case 40:
-			ballY += 15;
-            		if (ballY > zoneHeight - 15) { ballY = zoneHeight - 15; }
-            		ball.setAttribute("cy", ballY);
-            		break;
+        // Droite 
+        case 39:
+            ballX += 15;
+            if (ballX > zoneWidth - 15) { ballX = zoneWidth - 15; }
+            ball.setAttribute("cx", ballX);
+            break;
 
+        // Haut 
+        case 38:
+            ballY -= 15;
+            if (ballY < 15) { ballY = 15; }
+            ball.setAttribute("cy", ballY);
+            break;
 
-            }
-
+        // Bas 
+        case 40:
+            ballY += 15;
+            if (ballY > zoneHeight - 15) { ballY = zoneHeight - 15; }
+            ball.setAttribute("cy", ballY);
+            break;
+    }
 }
-	 
 </script>
 </head>
 <body onload="principale()">
-	<h1>Jeux Javascript</h1>
-	<svg id="zonedejeux">
-	<circle cx="450" cy="200" r="15" fill="tomato" id="ball" />
-	<text x="885" y="205" font-size="30" id="ballBlue">&#128540;</text>
-	
-	</svg>
-<body>
+    <h1>Jeux Javascript</h1>
+    <svg id="zonedejeux">
+        <circle cx="450" cy="200" r="15" fill="tomato" id="ball" />
+        <text x="885" y="205" font-size="30" id="ballBlue">&#128540;</text>
+    </svg>
+</body>
 </html>
-
