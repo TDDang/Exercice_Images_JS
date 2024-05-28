@@ -38,18 +38,18 @@ function bouger(){
     var ballY = parseInt(ball.getAttribute("y"));
 
     // Déplacement horizontal du chat
-    ballBlueX -= 15;
+    ballBlueX -= 5;
     if (ballBlueX < 15) { ballBlueX = 15; }
 
     // Déplacement vertical du chat en fonction de la souris
     if (ballBlueY < ballY) {
-        ballBlueY += 15;
+        ballBlueY += 5;
     } else if (ballBlueY > ballY) {
-        ballBlueY -= 15;
+        ballBlueY -= 5;
     }
 
     ballBlue.setAttribute("x", ballBlueX);
-    ballBlue.setAttribute("y", ballBlueY + 15);
+    ballBlue.setAttribute("y", ballBlueY + 5);
 }
 
 function deplacement(evt) {
@@ -64,28 +64,28 @@ function deplacement(evt) {
         // Gauche 
         case 37:
             ballX -= 15;
-            if (ballX < 15) { ballX = 15; }
+            if (ballX < 0) { ballX = 0; }
             ball.setAttribute("x", ballX);
             break;
 
         // Droite 
         case 39:
             ballX += 15;
-            if (ballX > zoneWidth - 15) { ballX = zoneWidth - 15; }
+            if (ballX > zoneWidth - 30) { ballX = zoneWidth - 30; }
             ball.setAttribute("x", ballX);
             break;
 
         // Haut 
         case 38:
             ballY -= 15;
-            if (ballY < 15) { ballY = 15; }
+            if (ballY < 30) { ballY = 30; }
             ball.setAttribute("y", ballY);
             break;
 
         // Bas 
         case 40:
             ballY += 15;
-            if (ballY > zoneHeight - 15) { ballY = zoneHeight - 15; }
+            if (ballY > zoneHeight - 30) { ballY = zoneHeight - 30; }
             ball.setAttribute("y", ballY);
             break;
     }
